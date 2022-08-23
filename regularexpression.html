@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+		function validate(){
+			var name=document.getElementById('name').value;
+			var mobile=document.getElementById('mobile').value;
+			var email=document.getElementById('email').value;
+			var password=document.getElementById('password').value;
+			var confirm=document.getElementById('confirm').value;
+			var nameCheck=/^[a-zA-Z ]+$/;
+			var mobileCheck=/^[0-9]{10}$/;
+			var emailCheck=/^[a-zA-z0-9@#$_.]+\@[a-z]+\.[a-z]{2,3}$/;
+			var passwordCheck=/^[a-zA-z0-9@#$_. ]+$/
+			console.log(password,confirm)
+			if (name==""||name.length<3){
+				alert('plese check your name');
+				return false;
+			}
+			if(!name.match(nameCheck)){
+				alert('special characters not allowed');
+				return false;
+			}
+			if(mobile==""){
+				alert("enter your number");
+				return false;
+			}
+			if(!mobile.match(mobileCheck)){
+				alert('check your number again')
+				return false;
+			}
+			if(email==""){
+				alert('enter your email');
+				return false;
+			}
+			if(!email.match(emailCheck)){
+				alert('check your email');
+				return false;
+			}
+			if(password==""){
+				alert('Enter your password');
+				return false;
+			}
+			if(!password.match(passwordCheck)){
+				alert('atleast 8 keywords');
+				return false;
+			}
+			if(confirm==""){
+				alert('Confirm Password');
+				return false;
+			}
+			if(!password.match(confirm)||!confirm.match(password)){
+				alert('please check the password')
+				return false;
+			}
+			return true;
+		}
+	</script>
+</head>
+<body>
+	<form onsubmit="return validate()" action="https://www.google.com">
+		<input id="name" type="text" placeholder="Enter your name"><br><br>
+		<input id="mobile" type="text" placeholder="Enter your mobile"><br><br>
+		<input id="email" type="text" placeholder="Enter your email"><br><br>
+		<input id="password" type="text" placeholder="Enter your password"><br><br>
+		<input id="confirm" type="text" placeholder="Confirm Password"><br><br>
+		<button>Submit</button>
+	</form>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+		fetch('https://fakestoreapi.com/products')
+
+			.then((res)=>{
+				return res.json()
+			})
+			.then((resJson)=>{
+				console.log(resJson)
+				
+			})
+
+
+		function pushData(){
+			var title=document.getElementById('title').value,
+				price=document.getElementById('price').value
+
+				console.log(title,price)
+				fetch('https://fakestoreapi.com/products/7',{
+						method:"PUT",
+						body:JSON.stringify(title,price)
+				}).then((res)=>{
+					console.log(res)
+				})
+				return false
+		}
+	</script>
+</head>
+<body>
+	<h1>Here is the data</h1>
+	<form onsubmit="return pushData()">
+		<input type="text" id="title" placeholder="title"><br><br>
+		<input type="text" id="price" placeholder="price"><br><br>
+		<button>Submit</button>
+	</form>
+	<div class="container">
+			<div class="title">
+				<p id="title"></p>
+			</div>
+			<div class="price">
+				<p id="price"></p>
+			</div>
+		</div>
+</body>
+</html>

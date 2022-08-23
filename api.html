@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.container{
+			display: flex;
+			justify-content: space-around;
+			line-height: 20px;
+
+		}
+	</style>
+	<script type="text/javascript">
+		fetch('https://fakestoreapi.com/products')
+
+			.then((res)=>{
+				return res.json()
+			})
+			.then((resJson)=>{
+				console.log(resJson)
+				display(resJson)
+			})
+
+			function display(details){
+				for(var i=0;i<details.length;i++){
+					document.getElementById('title').innerHTML+=`<p>${details[i].title}</p>`
+					document.getElementById('price').innerHTML+=`<p>${details[i].price}</p>`
+				}
+			}
+
+			/*function pushData(){
+				var name=document.getElementById('name').value,
+					password=document.getElementById('Password').value
+
+					console.log(name,password)
+					fetch("https://localehost:5000/take",{
+						method:"POST",
+						header:{
+							'Content-Type':"application/json"
+						},
+						body:JSON.stringify({name,password})
+					}).then((res)=>{
+						console.log(res)
+					})
+					return false
+			}*/
+	</script>
+
+</head>
+<body>
+	<h1>Here is the data</h1>
+	<form onsubmit="return pushData()">
+		<input type="text" id="name" placeholder="User name"><br><br>
+		<input type="text" id="Password" placeholder="Password"><br><br>
+		<button>Submit</button>
+	</form>
+	<div class="container">
+			<div class="title">
+				<p id="title"></p>
+			</div>
+			<div class="price">
+				<p id="price"></p>
+			</div>
+		</div>
+</body>
+</html>

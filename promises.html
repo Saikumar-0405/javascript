@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script>
+		/*const promise=new Promise((resolve,reject)=>{
+			var time=Math.random();
+			console.log(time)
+			if(time<0.5)
+				return resolve("done i got data")
+			else
+				return reject("server crashed")
+		});
+		console.log(promise)*/
+
+		fetch('https://reqres.in/api/users?page=2')
+			.then((res)=>{
+				return res.json()
+			})
+			.then((resJson)=>{
+				console.log(resJson.data)
+				display(resJson)
+			})
+
+			function display(details){
+				for(var i=0;i<details.length;i++){
+					document.getElementById('email').innerHTML+=`<p>${details[i].email}</p>`
+					document.getElementById('first_name').innerHTML+=`<p>${details[i].first_name}</p>`
+				}
+			}
+
+		/*fetch('https://reqres.in/api/users?page=2')
+			.then((api)=>{
+				return api.json()
+			})
+			.then((apiJson)=>{
+				console.log(apiJson)
+			})*/
+			
+	</script>
+</head>
+<body>
+	<div class="container">
+			<div class="title">
+				<p id="email"></p>
+			</div>
+			<div class="price">
+				<p id="first_name"></p>
+			</div>
+		</div>
+</body>
+</html>
